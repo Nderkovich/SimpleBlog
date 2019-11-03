@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}My posts{% endblock %}
+{% block content %}
+{% for post in posts %}
+<br>
+<a href="{% url 'post:post_detail' post_id=post.id %}">
+        <div class="card" style="min-width: 60%;width:60%">
+            <div class="card-content">
+              <p class="title">
+                    {{ post.title }}
+              </p>
+              <p class="subtitle">
+                {{ post.body }}
+              </p>
+            </div>
+            <footer class="card-footer">
+                    <p class="card-footer-item">
+                      <span>
+                        {{ post.date_created }}
+                      </span>
+                    </p>
+                </footer>
+        </div>
+    </a>
+  {% endfor %}
+{% endblock %}

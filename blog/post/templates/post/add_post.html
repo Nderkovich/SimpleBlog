@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Add post{% endblock %}
+{% block content %}
+<br>
+    <form action="." method="POST">
+        <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+            {% render_field  form.title class="input" style="width: 50%" %}
+        </div>
+        </div>
+        <div class="field">
+            <label class="label">Post body</label>
+            <div class="control">
+                    {% render_field  form.body class="textarea has-fixed-size" style="width: 50%; min-width: 50%" type="textarea" rows="5" cols="1"    %}
+            </div>
+        </div>
+        <div class="checkbox">
+            {% render_field form.is_shared  %} Is shared
+        </div>
+        <br>
+        <button type="submit" class="button is-link">Submit</button>
+        {% csrf_token %}
+    </form>
+{% endblock %}

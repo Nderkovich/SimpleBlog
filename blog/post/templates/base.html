@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/bulma.css" %}">
+</head>
+<body>
+        <section class="hero is-primary is-small">
+                <!-- Hero head: will stick at the top -->
+                <div class="hero-head">
+                  <nav class="navbar">
+                    <div class="container">
+                      <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            {% if not user.is_authenticated %}     
+                                <a class="navbar-item" href="{% url 'mylogin:login' %}">
+                                    Login
+                                </a>
+                                <a class="navbar-item" href="{% url 'mylogin:register' %}">
+                                    Register
+                                </a>
+                            {% else %}
+                            <ul>
+                                <li><h5 class="title is-5">Welcome  {{ user.username }}</h5></li>
+                                <li><a style="color: inherit;" href="{% url 'mylogin:logout' %}">Log out</a></li>
+                            </ul>
+                            {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              
+                <!-- Hero content: will be in the middle -->
+                <div class="hero-body">
+                  <div class="container has-text-centered">
+                      <a href="{% url 'post:all_posts' %}">
+                    <h1 class="title">
+                      MyBlog
+                    </h1>
+                    </a>
+                  </div>
+                </div>
+              
+                <!-- Hero footer: will stick at the bottom -->
+                <div class="hero-foot" style="align-content: center; text-align:center">
+                  <nav class="tabs" style="align-content: center; text-align:center">
+                    <div class="container" style="align-content: center; text-align:center" >
+                      <ul style="margin-left: 40%;">
+                        <li><a href="{% url 'post:all_posts' %}">Home</a></li>
+                        <li><a href="{% url 'post:add_post' %}">Add post</a></li>
+                        <li><a href="{% url 'post:my_posts' %}">My posts</a></li>
+                        <li></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </section>
+    <div class="columns">
+    <div class="column is one third"></div>
+    <div class="column is-two-thirds">
+        {% block content %}
+        {% endblock %}
+    </div>
+    </div>
+</body>
+</html>

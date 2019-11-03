@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Post: {{ post.title }}{% endblock %}
+{% block content %}
+<br>
+    <h1 class="title is-1">{{ post.title }}</h1>
+    <p class="content is-large"  style="width:60%;overflow-wrap:break-word ;word-break: break-all;">{{ post.body }}</p>
+    <p class="content is-medium">{{ post.date_created }}</p>
+    <h6>By <a href="{% url 'post:user_posts' post.user.id %}">{{ post.user.username }}</a></h6>
+{% endblock %}

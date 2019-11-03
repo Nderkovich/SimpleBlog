@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <form action="." method="POST">
+        <br>
+            <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                        {% render_field  form.username class="input" style="width: 50%" %}
+                    </div>
+                    </div>
+                    <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                                {% render_field  form.password class="input" style="width: 50%" type="password" %}
+                            </div>
+                            </div>
+                    <button type="submit" class="button is-link">Submit</button>
+                    {% csrf_token %}
+        {% csrf_token %}
+    </form>
+{% endblock %}
