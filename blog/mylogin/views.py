@@ -39,7 +39,7 @@ def register(request):
                                             first_name= form.cleaned_data['first_name'],
                                             last_name= form.cleaned_data['last_name'])
             user.save()
-            return redirect('post:login')
+            return redirect('mylogin:login')
         else:
             return render(request, 'mylogin/login_error.html')
     else:
